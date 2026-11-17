@@ -1,0 +1,176 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="{{ request.LANGUAGE_CODE|default:'ru' }}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Care - Натуральная косметика из Кыргызстана</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>TERRA CARE</h1>
+            </div>
+            <button type="button" class="nav-toggle" id="navToggle" aria-label="Меню">
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+                <span class="nav-toggle-bar"></span>
+            </button>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#products" class="nav-link" data-translate="nav_products">Товары</a></li>
+                <li><a href="#about" class="nav-link" data-translate="nav_about">О проекте</a></li>
+                <li><a href="#mission" class="nav-link" data-translate="nav_mission">Миссия</a></li>
+                <li><a href="#request" class="nav-link" data-translate="nav_request">Заявка на карагану</a></li>
+            </ul>
+            <div class="nav-actions">
+                <label class="lang-select-wrap">
+                    <select id="langSelect" class="lang-select" aria-label="Язык">
+                        <option value="ky" {% if request.LANGUAGE_CODE == 'ky' %}selected{% endif %}>KY</option>
+                        <option value="ru" {% if request.LANGUAGE_CODE == 'ru' %}selected{% endif %}>RU</option>
+                        <option value="en" {% if request.LANGUAGE_CODE == 'en' %}selected{% endif %}>EN</option>
+                    </select>
+                </label>
+                <button class="cart-btn" id="cartBtn" aria-label="Корзина">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>TERRA CARE</h3>
+                    <p data-translate="footer_desc">Экологический и социальный проект Terra Care, превращающий карагану в полезные товары.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_quick_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#products" data-translate="footer_products">Товары</a></li>
+                        <li><a href="#about" data-translate="footer_about">О проекте</a></li>
+                        <li><a href="#mission" data-translate="footer_mission">Миссия</a></li>
+                        <li><a href="#request" data-translate="nav_request">Заявка на карагану</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_contacts">Контакты</h4>
+                    <p data-translate="footer_location">Кыргызстан, г. Бишкек</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate="footer_copyright">Terra Care. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="cart_title">Корзина</h2>
+                <button class="modal-close" id="closeCart">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <strong><span data-translate="total_label">Итого</span>: <span id="cartTotal">0</span> <span data-translate="currency_som">сом</span></strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="clearCart" data-translate="clear_cart">Очистить корзину</button>
+                <button class="btn-primary" id="checkoutBtn" data-translate="checkout_title">Оформление заказа</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="checkout_title">Оформление заказа</h2>
+                <button class="modal-close" id="closeCheckout">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    {% csrf_token %}
+                    <div class="form-group">
+                        <label for="customerName"><span data-translate="form_name">Имя</span> *</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone"><span data-translate="form_phone">Телефон</span> *</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress"><span data-translate="form_address">Адрес доставки</span> *</label>
+                        <textarea id="customerAddress" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerComment" data-translate="form_comment">Комментарий к заказу</label>
+                        <textarea id="customerComment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="cancelCheckout" data-translate="form_cancel">Отмена</button>
+                <button type="submit" class="btn-primary" id="submitOrder" data-translate="form_submit">Отправить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal -->
+    <div class="modal" id="productModal">
+        <div class="modal-content product-modal-content">
+            <div class="modal-header">
+                <h2 id="productModalTitle"></h2>
+                <button class="modal-close" id="closeProductModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img id="productMainImage" src="" alt="">
+                    </div>
+                    <div class="product-thumbnails" id="productThumbnails"></div>
+                </div>
+                <div class="product-details">
+                    <p id="productModalDesc"></p>
+                    <p class="product-price" id="productModalPrice"></p>
+                    <button class="btn-primary" id="addToCartFromModal" data-translate="add_to_cart">В корзину</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{% static 'js/translations.js' %}"></script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var serverLang = '{{ request.LANGUAGE_CODE|default:"ru" }}'.substring(0, 2);
+        if (['ky','ru','en'].indexOf(serverLang) !== -1 && typeof setLanguage === 'function') {
+            setLanguage(serverLang);
+        }
+        var langSelect = document.getElementById('langSelect');
+        if (langSelect) {
+            langSelect.addEventListener('change', function() {
+                var lang = this.value;
+                if (lang) window.location.href = '/' + lang + '/';
+            });
+        }
+        if (typeof window.renderProducts === 'function') window.renderProducts();
+        if (typeof window.updateCartUI === 'function') window.updateCartUI();
+    });
+    </script>
+    <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

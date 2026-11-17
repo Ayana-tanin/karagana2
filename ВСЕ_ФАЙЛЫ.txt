@@ -1,0 +1,137 @@
+СТРУКТУРА DJANGO ПРОЕКТА TERRA CARE
+=====================================
+
+КОРНЕВАЯ ДИРЕКТОРИЯ:
+---------------------
+manage.py                    - Главный скрипт Django
+requirements.txt             - Зависимости Python
+db.sqlite3                   - База данных (создается после migrate)
+
+ДОКУМЕНТАЦИЯ:
+-------------
+START_HERE.md                - НАЧНИТЕ ЗДЕСЬ! Быстрый старт
+ГДЕ_ЧТО_НАХОДИТСЯ.md         - Быстрая навигация по файлам
+PROJECT_STRUCTURE.md         - Детальная структура проекта
+FILES_EXPLANATION.md         - Объяснение всех файлов
+commands.md                  - Команды Django
+SETUP.md                     - Подробная инструкция установки
+QUICKSTART.md                - Быстрый старт
+README.md                    - Основная документация
+CLEANUP.md                   - Очистка старых файлов
+
+ПРОЕКТ DJANGO (terracare/):
+----------------------------
+terracare/__init__.py        - Инициализация пакета
+terracare/settings.py        - НАСТРОЙКИ ПРОЕКТА (важно!)
+terracare/urls.py            - Главные URL маршруты
+terracare/wsgi.py            - WSGI конфигурация
+
+ПРИЛОЖЕНИЕ МАГАЗИНА (shop/):
+-----------------------------
+shop/__init__.py             - Инициализация приложения
+shop/models.py               - МОДЕЛИ: Product, ProductImage, Order, OrderItem
+shop/admin.py                - АДМИН ПАНЕЛЬ: настройка управления
+shop/views.py                - VIEWS: обработка запросов, API
+shop/urls.py                  - URL маршруты приложения
+shop/apps.py                 - Конфигурация приложения
+shop/migrations/__init__.py   - Папка для миграций БД
+
+ШАБЛОНЫ HTML (templates/):
+----------------------------
+templates/base.html          - Базовый шаблон (навигация, модальные окна)
+templates/shop/index.html    - Главная страница сайта
+
+СТАТИЧЕСКИЕ ФАЙЛЫ (static/):
+-----------------------------
+static/css/styles.css        - СТИЛИ: темно-зеленый дизайн, большие буквы
+static/js/app.js             - JAVASCRIPT: корзина, заказы, модальные окна
+static/images/               - ИЗОБРАЖЕНИЯ: скопируйте сюда ваши фото
+static/images/.gitkeep       - Инструкция для изображений
+
+ДРУГИЕ ПАПКИ:
+-------------
+media/                       - Загружаемые файлы (создается автоматически)
+locale/                      - Файлы переводов (для i18n)
+
+СКРИПТЫ:
+--------
+run.bat                      - Быстрый запуск сервера (Windows)
+
+СТАРЫЕ ФАЙЛЫ (можно удалить):
+------------------------------
+index.html                   - Старый HTML (не используется)
+styles.css                   - Старый CSS (не используется)
+app.js                       - Старый JS (не используется)
+products.js                  - Старый products.js (не используется)
+translations.js              - Старый translations.js (не используется)
+config.example.js            - Старый config (не используется)
+
+ИЗОБРАЖЕНИЯ (нужны для сайта):
+-------------------------------
+main_page.jpg                - Главное изображение (скопировать в static/images/)
+soap2.JPG                    - Изображение товара (скопировать в static/images/)
+soap3.JPG                    - Изображение товара (скопировать в static/images/)
+soap4.PNG                    - Изображение товара (скопировать в static/images/)
+IMG_8132.PNG                 - Изображение товара (скопировать в static/images/)
+IMG_8135.PNG                 - Изображение товара (скопировать в static/images/)
+IMG_8136.PNG                 - Изображение товара (скопировать в static/images/)
+IMG_8139.PNG                 - Изображение товара (скопировать в static/images/)
+WhatsApp Image 2025-12-27... - Изображение товара (скопировать в static/images/)
+
+
+ВАЖНЫЕ ФАЙЛЫ ДЛЯ ИЗМЕНЕНИЯ:
+============================
+
+1. НАСТРОЙКИ ПРОЕКТА:
+   terracare/settings.py
+   - TELEGRAM_BOT_TOKEN
+   - TELEGRAM_CHAT_ID
+   - LANGUAGES
+   - DATABASES
+
+2. ДИЗАЙН:
+   static/css/styles.css
+   - Цвета (переменные :root)
+   - Размеры шрифтов
+   - Стили компонентов
+
+3. ЛОГИКА:
+   static/js/app.js          - JavaScript логика
+   shop/views.py              - Обработка на сервере
+
+4. ТЕКСТЫ:
+   templates/base.html        - Навигация, footer
+   templates/shop/index.html  - Главная страница
+
+5. ДАННЫЕ:
+   shop/models.py             - Структура данных
+   Админ панель /admin/       - Управление товарами
+
+
+КОМАНДЫ:
+========
+python manage.py migrate          - Создать/обновить БД
+python manage.py createsuperuser  - Создать администратора
+python manage.py runserver         - Запустить сервер
+python manage.py makemigrations    - Создать миграции
+
+
+СТРУКТУРА БД:
+=============
+Product (Товар)
+  - name_ky, name_ru, name_en
+  - description_ky, description_ru, description_en
+  - price, in_stock
+
+ProductImage (Изображения)
+  - product (связь)
+  - image (файл)
+  - order (порядок)
+
+Order (Заказ)
+  - customer_name, customer_phone, customer_address
+  - status, total, sent_to_telegram
+
+OrderItem (Позиции заказа)
+  - order, product
+  - quantity, price

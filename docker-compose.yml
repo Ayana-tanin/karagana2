@@ -1,0 +1,16 @@
+# Terra Care — запуск: docker-compose up --build
+# Сайт: http://localhost:8001/ (если 8000 занят — Docker использует 8001)
+
+services:
+  web:
+    build: .
+    container_name: terracare-web
+    ports:
+      - "8001:8000"
+    environment:
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-YOUR_BOT_TOKEN_HERE}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID:-YOUR_CHAT_ID_HERE}
+    volumes:
+      # Медиа (загруженные файлы) сохраняются на хосте
+      - ./media:/app/media
+    restart: unless-stopped

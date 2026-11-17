@@ -1,0 +1,26 @@
+# Production deploy: docker-compose -f docker-compose.prod.yml up -d --build
+# Остановка: docker-compose -f docker-compose.prod.yml down
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    image: terracare:prod
+    container_name: terracare-web-prod
+    ports:
+      - "8080:8080"
+    environment:
+      - PORT=8080
+      - DJANGO_DEBUG=0
+      - DJANGO_SECRET_KEY=${DJANGO_SECRET_KEY:-change-me-in-production-long-random-string}
+      - ALLOWED_HOSTS=${ALLOWED_HOSTS:-*,.up.railway.app,karagana-production.up.railway.app}
+      - CSRF_TRUSTED_ORIGINS=${CSRF_TRUSTED_ORIGINS:-https://karagana-production.up.railway.app}
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN}
+      - TELEGRAM_CHAT_ID=${TELEGRAM_CHAT_ID}
+    volumes:
+      - media_data:/app/media
+    restart: always
+
+volumes:
+  media_data:

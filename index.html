@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terra Care - Натуральная косметика из Кыргызстана</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h1>Terra Care</h1>
+            </div>
+            <ul class="nav-menu">
+                <li><a href="#products" class="nav-link" data-translate="nav_products">Товары</a></li>
+                <li><a href="#about" class="nav-link" data-translate="nav_about">О проекте</a></li>
+                <li><a href="#mission" class="nav-link" data-translate="nav_mission">Миссия</a></li>
+            </ul>
+            <div class="nav-actions">
+                <div class="lang-switcher">
+                    <button type="button" class="lang-btn" data-lang="ky" data-translate="lang_ky">KY</button>
+                    <button type="button" class="lang-btn" data-lang="ru" data-translate="lang_ru">RU</button>
+                    <button type="button" class="lang-btn" data-lang="en" data-translate="lang_en">EN</button>
+                </div>
+                <button class="cart-btn" id="cartBtn">
+                    <span class="cart-icon">🛒</span>
+                    <span class="cart-count" id="cartCount">0</span>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1 class="hero-title" data-translate="hero_title">Натуральная косметика из Кыргызстана</h1>
+            <p class="hero-desc" data-translate="hero_desc">Превращаем кустарник карагана в экологичные товары: натуральное мыло, косметику и банные веники. Безотходное производство и поддержка сельских семей.</p>
+            <a href="#products" class="btn-primary" data-translate="hero_btn">Смотреть товары</a>
+        </div>
+        <div class="hero-image">
+            <img src="main_page.jpg" alt="Terra Care">
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section id="products" class="products-section">
+        <div class="container">
+            <h2 class="section-title" data-translate="products_title">Наши товары</h2>
+            <p class="section-subtitle" data-translate="products_subtitle">Натуральная косметика и хозяйственные товары на основе караганы</p>
+            
+            <div class="products-grid" id="productsGrid">
+                <!-- Products will be dynamically loaded here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title" data-translate="about_title">О проекте Terra Care</h2>
+            <div class="about-content">
+                <p class="about-intro" data-translate="about_intro_1">«Terra Care» — экологический и социальный проект из Кыргызстана. Мы перерабатываем кустарник карагана, который разрастается на пастбищах и мешает фермерам, в полезные натуральные продукты.</p>
+                <p class="about-intro" data-translate="about_intro_2">Из листьев и цветов мы производим натуральное мыло и косметические изделия, а из ветвей — экологичные банные и хозяйственные веники. Проект помогает уменьшить сжигание растительных отходов, восстановить пастбища и создать дополнительный доход для сельских семей, особенно женщин.</p>
+            </div>
+                <div class="about-cards">
+                    <div class="about-card">
+                        <div class="card-icon">♻️</div>
+                        <h3 data-translate="about_card1_title">Безотходная модель</h3>
+                        <p data-translate="about_card1_desc">Из листьев и цветов — натуральное мыло и косметика. Из ветвей — веники для дома и бани.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">🌿</div>
+                        <h3 data-translate="about_card2_title">Локальное сырьё</h3>
+                        <p data-translate="about_card2_desc">Перерабатываем кустарник карагана, который разрастается на пастбищах и мешает фермерам.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">🤝</div>
+                        <h3 data-translate="about_card3_title">Поддержка сообществ</h3>
+                        <p data-translate="about_card3_desc">Создаём дополнительный доход для сельских семей, особенно женщин.</p>
+                    </div>
+                    <div class="about-card">
+                        <div class="card-icon">✋</div>
+                        <h3 data-translate="about_card4_title">Ручное производство</h3>
+                        <p data-translate="about_card4_desc">Каждый продукт изготовлен вручную с заботой о природе и людях.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mission Section -->
+    <section id="mission" class="mission-section">
+        <div class="container">
+            <h2 class="section-title" data-translate="mission_title">Наша миссия</h2>
+            <div class="mission-content">
+                <p data-translate="mission_p1">Мы превращаем экологическую проблему в устойчивый ресурс и предлагаем доступные, экологичные товары местного производства.</p>
+                <p data-translate="mission_p2">Проект помогает уменьшить сжигание растительных отходов, восстановить пастбища и создать дополнительный доход для сельских семей Кыргызстана, особенно женщин.</p>
+                <p data-translate="mission_p3">Каждая покупка вносит вклад в решение экологической проблемы и поддержку местных сообществ.</p>
+                
+                <h3 class="advantages-title" data-translate="mission_advantages_title">Наши преимущества:</h3>
+                <ul class="advantages-list">
+                    <li data-translate="mission_adv1">Безотходная модель производства</li>
+                    <li data-translate="mission_adv2">Локальное сырьё из Кыргызстана</li>
+                    <li data-translate="mission_adv3">Ручное производство малыми партиями</li>
+                    <li data-translate="mission_adv4">Натуральный состав без агрессивной химии</li>
+                    <li data-translate="mission_adv5">Поддержка сельских женщин и фермеров</li>
+                    <li data-translate="mission_adv6">Доступные цены на экологичные товары</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3>Terra Care</h3>
+                    <p data-translate="footer_desc">Экологический и социальный проект Terra Care, превращающий карагану в полезные товары.</p>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_quick_links">Быстрые ссылки</h4>
+                    <ul>
+                        <li><a href="#products" data-translate="footer_products">Товары</a></li>
+                        <li><a href="#about" data-translate="footer_about">О проекте</a></li>
+                        <li><a href="#mission" data-translate="footer_mission">Миссия</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4 data-translate="footer_contacts">Контакты</h4>
+                    <p data-translate="footer_location">Кыргызстан, г. Бишкек</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p data-translate="footer_copyright">Terra Care. Все права защищены.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Cart Modal -->
+    <div class="modal" id="cartModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="cart_title">Корзина</h2>
+                <button class="modal-close" id="closeCart">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div id="cartItems"></div>
+                <div class="cart-total">
+                    <strong>Итого: <span id="cartTotal">0</span> сом</strong>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn-secondary" id="clearCart">Очистить корзину</button>
+                <button class="btn-primary" id="checkoutBtn">Оформить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div class="modal" id="checkoutModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 data-translate="checkout_title">Оформление заказа</h2>
+                <button class="modal-close" id="closeCheckout">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="checkoutForm">
+                    <div class="form-group">
+                        <label for="customerName" data-translate="form_name">Имя *</label>
+                        <input type="text" id="customerName" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerPhone" data-translate="form_phone">Телефон *</label>
+                        <input type="tel" id="customerPhone" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerAddress" data-translate="form_address">Адрес доставки *</label>
+                        <textarea id="customerAddress" rows="3" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="customerComment" data-translate="form_comment">Комментарий к заказу</label>
+                        <textarea id="customerComment" rows="3"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-secondary" id="cancelCheckout" data-translate="form_cancel">Отмена</button>
+                <button type="submit" class="btn-primary" id="submitOrder" data-translate="form_submit">Отправить заказ</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Modal (for viewing multiple images) -->
+    <div class="modal" id="productModal">
+        <div class="modal-content product-modal-content">
+            <div class="modal-header">
+                <h2 id="productModalTitle"></h2>
+                <button class="modal-close" id="closeProductModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="product-gallery">
+                    <div class="product-main-image">
+                        <img id="productMainImage" src="" alt="">
+                    </div>
+                    <div class="product-thumbnails" id="productThumbnails"></div>
+                </div>
+                <div class="product-details">
+                    <p id="productModalDesc"></p>
+                    <p class="product-price" id="productModalPrice"></p>
+                    <button class="btn-primary" id="addToCartFromModal">Добавить в корзину</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="translations.js"></script>
+    <script src="products.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

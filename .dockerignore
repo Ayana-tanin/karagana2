@@ -1,0 +1,55 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv
+.venv
+env
+.env
+
+# IDE
+.idea
+.vscode
+.cursor
+
+# Документы и лишнее
+*.md
+*.docx
+*.pdf
+*.xlsx
+*.pptx
+*.csv
+*.fig
+*.side
+*.make
+*.heic
+
+# Локальные данные (в контейнере создадим свои при первом запуске)
+# db.sqlite3 — раскомментируйте, если не хотите монтировать том
+# media
+
+# Остальное
+*.log
+.DS_Store
+*.bat
+config.example.js
+index.html
+styles.css
+app.js
+products.js
+translations.js
+CLEANUP.md
+FILES_EXPLANATION.md
+PROJECT_STRUCTURE.md
+QUICKSTART.md
+START_HERE.md
+ВСЕ_ФАЙЛЫ.txt
+ГДЕ_ЧТО_НАХОДИТСЯ.md
+СТРУКТУРА_ПРОЕКТА.txt
+commands.md
